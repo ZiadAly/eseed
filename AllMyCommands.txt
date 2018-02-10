@@ -1,0 +1,49 @@
+git init
+git status
+git commit Section1.1.txt 
+git init
+git config Ziad.Aly
+git config Zerobarca97@gmail.com
+git config ZiadAly@users.norelpy.github.com
+git commit Section1.1.txt "Create  a Section1.1."
+git commit Section1.1.tct
+git commit Section1.1.txt
+git init
+git commit -m "Create a Readme.'
+git status
+git commit -m "Creat A Readme."
+git init 
+git status
+git commit -m "Create Section1.1 "
+git config --global user.name "ziad"
+git config --global user.email "Zerobarca97@gmail.com"
+git commit -m "Create Section1.1"
+git add Section3.1.txt
+git commit -m "Create Section3.1 then delete it finally restore it"
+git add Section5.1.txt
+git commit -m "Create Section5.1"
+git remote -v
+git remote 
+git remote -u https://github.com/ZiadAly/Sprint0.git
+git remote add https://github.com/ZiadAly/Sprint0.git
+git remote add 
+git remote add https://github.com/ZiadAlt/Sprint0.git
+git remote add origin https://github.com/ZiadAly/Sprint0.git
+git push -u origin master
+git remote -v
+git push -u origin master
+git push -u origin master
+git pull
+git pull origin master
+git push -u origin master
+git status
+git reset
+git status
+git add Section1.1.txt
+git add Section1.3.txt
+git add Section3.1.txt
+git add Section5.1.txt
+git checkout Section3.1.txt
+git status
+git commit -m "Create Section1.1 , section3.1 and Section5.1 after that delete section3.1 then restore it"
+git status
