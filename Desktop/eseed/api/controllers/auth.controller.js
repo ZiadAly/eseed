@@ -160,3 +160,57 @@ module.exports.deleteEmp= async (req, res) => {
       data: deletedActivity
     });
   };
+  module.exports.updateEmployee = async (req, res) => {
+
+   if (!Validations.isObjectId(req.params.userId)) {
+     return res.status(422).json({
+       err: null,
+       msg: 'userId parameter must be a valid ObjectId.',
+       data: null
+     });
+   }
+   const valid =
+   req.body.hireDate &&
+   Validations.isDate(req.body.hireDate) &&
+   req.body.MNumber &&
+   Validations.isNumber(req.body.MNumber);
+ if (!valid) {
+   return res.status(422).json({
+     err: null,
+     msg: 'Price/Score is a required field',
+     data: null
+   });
+ }
+ console.log('test1');
+   // Security Check
+   delete req.body.createdAt;
+   req.body.updatedAt = moment().toDate();
+
+   const user = await User.findById(req.decodedToken.user._id).exec();
+   console.log('test2');
+   if(!user) {
+     return res.status(404).json({
+       err: null,
+       msg: 'User not found.',
+       data: null
+     });
+   }
+   console.log('test3');
+   const updateduser = await user.findByIdAndUpdate(
+     req.params.userId,
+     {
+       $set: req.body
+     },
+     { new: true }
+   ).exec();
+   if (!updateduser) {
+     return res
+       .status(404)
+       .json({ err: null, msg: 'user not found.', data: null });
+   }
+   res.status(200).json({
+     err: null,
+     msg: 'user was updated successfully.',
+     data: updateduser
+   });
+ };

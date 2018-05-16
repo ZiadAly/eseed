@@ -46,6 +46,8 @@ router.post('/auth/login', authCtrl.login);
 router.get('/auth/getAllUsers', authCtrl.getAllUsers );
 router.post('/auth/AddEmp', authCtrl.AddEmp);
 router.delete('/auth/deleteEmp/:userId', authCtrl.deleteEmp);
+router.patch('/auth/updateEmployee/:userId', authCtrl.updateEmployee);
+
 
 
 module.exports = router;

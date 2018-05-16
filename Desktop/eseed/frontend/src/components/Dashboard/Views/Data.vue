@@ -34,13 +34,10 @@
     <table  class="table table-striped" id="firstTable" >
     <thead >
       <tr>
-        <th>Username</th>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>Teacher Request</th>
-        <th>Action</th>
+        <th>name</th>
+        <th>email</th>
+        <th>telephone</th>
+        <th>hire date</th>
       </tr>
     </thead>
     <tbody>
@@ -74,8 +71,6 @@ import PaperNotification from 'src/components/UIComponents/NotificationPlugin/No
 import PaperTable from 'components/UIComponents/PaperTable.vue'
 const tableColumns = ['role', 'childScore', 'ID', 'username', 'firstname', 'lastname', 'password', 'email', '']
 const tableData = [{
-  role: '',
-  childScore: '',
   id: '',
   username: '',
   firstname: '',
@@ -119,7 +114,6 @@ export default {
       lastname: '',
       password: '',
       email: '',
-      token: sessionStorage.getItem('token'),
       type: ['', 'info', 'success', 'warning', 'danger'],
       arr1: []
       // }
@@ -136,51 +130,6 @@ export default {
       this.notifyVue('top', 'left', 'You dont have the required access rights for your request, Admins only can access this page.', 4)
       console.log(error)
     })
-  },
-  methods: {
-    acceptReq (id) {
-      axios.patch('/user/acceptTeacherRequest/' + id, {}, {
-        headers: { authorization: sessionStorage.getItem('token') }
-      })
-      .then((response) => {
-        console.log(response)
-        location.reload()
-        this.notifyVue('center', 'center', 'Done!', 2)
-      })
-      .catch((error) => {
-        this.notifyVue('top', 'left', 'An error has occured.', 4)
-        console.log(error)
-      })
-    },
-    denyReq (id) {
-      axios.patch('/user/denyTeacherRequest/' + id, {}, {
-        headers: { authorization: sessionStorage.getItem('token') }
-      })
-      .then((response) => {
-        console.log(response)
-        location.reload()
-        this.notifyVue('center', 'center', 'Done!', 2)
-      })
-      .catch((error) => {
-        this.notifyVue('top', 'left', 'An error has occured.', 4)
-        console.log(error)
-      })
-    },
-    notifyVue (verticalAlign, horizontalAlign, message, col) {
-      this.$notifications.notify(
-        {
-          message: message,
-          icon: 'ti-comments-smiley',
-          horizontalAlign: horizontalAlign,
-          verticalAlign: verticalAlign,
-          type: this.type[col]
-        })
-    },
-    insetIntoArr (arr) {
-      for (var i = 0; i < arr.length; i++) {
-        this.User.push(arr[i])
-      }
-    }
   }
 }
 </script>
